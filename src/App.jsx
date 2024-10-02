@@ -1,22 +1,23 @@
+import { lazy } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import HomePage from "./pages/home/HomePage";
-import NoPage from "./pages/noPage/NoPage";
-import ProductInfo from "./pages/productInfo/ProductInfo";
-import ScrollTop from "./components/scrollTop/ScrollTop";
-import CartPage from "./pages/cart/CartPage";
-import AllProduct from "./pages/allProduct/AllProduct";
-import Signup from "./pages/registration/Signup";
-import Login from "./pages/registration/Login";
-import UserDashboard from "./pages/user/UserDashboard";
-import AdminDashboard from "./pages/admin/AdminDashboard";
-import AddProductPage from "./pages/admin/AddProductPage";
-import UpdateProductPage from "./pages/admin/UpdateProductPage";
+const HomePage = lazy(() => import("./pages/home/HomePage"));
+const NoPage = lazy(() => import("./pages/noPage/NoPage"));
+const ProductInfo = lazy(() => import("./pages/productInfo/ProductInfo"));
+const ScrollTop = lazy(() => import("./components/scrollTop/ScrollTop"));
+const CartPage = lazy(() => import("./pages/cart/CartPage"));
+const AllProduct = lazy(() => import("./pages/allProduct/AllProduct"));
+const Signup = lazy(() => import("./pages/registration/Signup"));
+const Login = lazy(() => import("./pages/registration/Login"));
+const UserDashboard = lazy(() => import("./pages/user/UserDashboard"));
+const AdminDashboard = lazy(() => import("./pages/admin/AdminDashboard"));
+const AddProductPage = lazy(() => import("./pages/admin/AddProductPage"));
+const UpdateProductPage = lazy(() => import("./pages/admin/UpdateProductPage"));
 import MyState from "./context/myState";
 import { Toaster } from "react-hot-toast";
-
-import CategoryPage from "./pages/category/CategoryPage";
 import { ProtectedRouteForUser } from "./protectedRoute/ProtectedRouteFoeUser";
 import { ProtectedRouteForAdmin } from "./protectedRoute/ProtectedRouteForAdmin";
+
+const CategoryPage = lazy(() => import("./pages/category/CategoryPage"));
 
 const App = () => {
   return (

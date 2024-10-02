@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import MyContext from "./myContext";
 import {
   collection,
@@ -50,6 +50,7 @@ function MyState({ children }) {
         setGetAllOrder(orderArray);
         setLoading(false);
       });
+      console.log("bhh");
       return () => data;
     } catch (error) {
       console.log(error);
@@ -97,19 +98,21 @@ function MyState({ children }) {
     getAllUserFunction();
   }, []);
   return (
-    <MyContext.Provider
-      value={{
-        loading,
-        setLoading,
-        getAllProduct,
-        getAllProductFunction,
-        getAllOrder,
-        deleteProduct,
-        getAllUser,
-      }}
-    >
-      {children}
-    </MyContext.Provider>
+    <Suspense fallback={<h1>Loading ...</h1>}>
+      <MyContext.Provider
+        value={{
+          loading,
+          setLoading,
+          getAllProduct,
+          getAllProductFunction,
+          getAllOrder,
+          deleteProduct,
+          getAllUser,
+        }}
+      >
+        {children}
+      </MyContext.Provider>
+    </Suspense>
   );
 }
 
